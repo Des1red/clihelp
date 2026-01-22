@@ -15,15 +15,15 @@ import "github.com/Des1red/clihelp"
 
 fmt.Println("Options:")
 clihelp.PrintFlags([]clihelp.Flag{
-    {"--listen", "address", "Listen address"},
-    {"--mode", "string", "direct | tor"},
+    {"--flag1", "bool", "Explenation of flag1"},
+    {"--flag2", "string", "Explenation of flag2"},
 })
 ```
 ### Output
 ```bash
 Options:
-  --listen  address  Listen address
-  --mode    string   direct | tor
+  --flag1    bool     Explenation of flag1
+  --flag2    strint   Explenation of flag2
 ```
 ### Design
 
