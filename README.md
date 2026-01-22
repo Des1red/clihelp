@@ -17,13 +17,17 @@ fmt.Println("Options:")
 clihelp.PrintFlags([]clihelp.Flag{
     {"--flag1", "bool", "Explenation of flag1"},
     {"--flag2", "string", "Explenation of flag2"},
+    {"--flag3", "", "Explenation of flag3"},
+    {"--flag4", "int", "Explenation of flag4"},
 })
 ```
 ### Output
 ```bash
 Options:
   --flag1    bool     Explenation of flag1
-  --flag2    strint   Explenation of flag2
+  --flag2    string   Explenation of flag2
+  --flag3             Explenation of flag3
+  --flag4    int      Explenation of flag4
 ```
 ### Design
 
