@@ -8,10 +8,11 @@
 // Example usage:
 //
 //	fmt.Println("Flags:")
-//	clihelp.PrintFlags([]clihelp.Flag{
-//	    {"--listen", "address", "Listen address"},
-//	    {"--mode", "string", "Execution mode"},
-//	})
+//	clihelp.Print(
+//	    clihelp.F("--flag1", "value", "Explanation"),
+//	    clihelp.F("--flag2", "value", "Explanation"),
+//		clihelp.F("--flag3", "", "Explanation"),
+//	)
 package clihelp
 
 import "fmt"
@@ -23,8 +24,17 @@ type Flag struct {
 	Desc string // description
 }
 
-// PrintFlags prints aligned flag descriptions to stdout.
-func PrintFlags(flags []Flag) {
+// F creates a Flag with the provided name, argument, and description.
+func F(name, arg, desc string) Flag {
+	return Flag{
+		Name: name,
+		Arg:  arg,
+		Desc: desc,
+	}
+}
+
+// Print prints aligned flag descriptions to stdout.
+func Print(flags ...Flag) {
 	flagW, argW := calcWidths(flags)
 	for _, f := range flags {
 		fmt.Printf(
@@ -38,6 +48,7 @@ func PrintFlags(flags []Flag) {
 	}
 }
 
+// calcWidths calculates the max width for flag and argument columns.
 func calcWidths(flags []Flag) (flagW, argW int) {
 	for _, f := range flags {
 		if len(f.Name) > flagW {
